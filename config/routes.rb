@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get "/tasks/:id" => "tasks#show", as: :task
   get "/tasks" => "tasks#index"
 
+  resources :tasks, only: [] do
+    resources :comments, only: [:create]
+  end
+
   root "tasks#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
